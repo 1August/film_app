@@ -1,33 +1,28 @@
 nav, footer{
-    background-color: #333;
+    /*background-color: #333;*/
     padding: .5rem 0;
+    /*border-bottom: 1px solid #333;*/
 }
 
-nav .container{
+nav{
+    border-bottom: 1px solid var(--main-dark-175);
+}
+
+nav .material-icons{
+    position: relative;
+    top: 6px;
+}
+
+footer{
+    border-top: 1px solid var(--main-dark-175);
+}
+
+nav .nav__container{
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     gap: 10%;
-}
-
-nav a{
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    padding: .5rem 1rem;
-}
-
-.left{
-    width: min-content;
-}
-
-.left img{
-    width: 100px;
-}
-
-.right{
-    width: 70%;
 }
 
 nav ul{
@@ -39,6 +34,72 @@ nav ul{
     justify-content: space-between;
     align-items: center;
 }
+
+nav a{
+    display: block;
+    text-decoration: none;
+    color: var(--main-dark);
+    padding: .5rem 1rem;
+}
+
+nav a:hover{
+    color: var(--main-dark-50);
+}
+
+.nav__left{
+    /*width: min-content;*/
+}
+
+.nav__left a{
+    padding-left: 0;
+}
+
+/*.nav__left img{*/
+/*    width: 100px;*/
+/*}*/
+
+#logo{
+    width: 40px;
+}
+
+.nav__links{
+    /*width: 70%;*/
+}
+
+.nav__links a{
+    /*padding-right: 0;*/
+}
+
+.nav__links{
+    border: 1px solid var(--main-dark);
+    border-radius: 100px;
+}
+
+.nav__links li:first-of-type{
+    border-radius: 100px 0 0 100px;
+    background-color: var(--main-sky_blue);
+}
+
+
+/* NEED TO ADD ACTIVE CLASS TO THE LINKS */
+
+/*.nav__links li:last-of-type a:has(.active){*/
+/*    border-radius: 0 100px 100px 0;*/
+/*    background-color: var(--main-sky_blue);*/
+/*}*/
+
+/*.nav__links li:not(:first-of-type, :last-of-type){*/
+/*    background-color: var(--main-sky_blue);*/
+/*}*/
+
+.nav__account{
+
+}
+
+.nav__account a{
+    padding-right: 0;
+}
+
 
 
 
@@ -63,9 +124,21 @@ footer li:not(:nth-child(4n + 1)){
 }
 
 footer a{
-    display: block;
+    /*display: block;*/
     margin: .5rem 1rem;
 
     text-decoration: none;
-    color: #fff;
+    color: var(--main-dark);
+}
+
+footer a:hover{
+    color: var(--main-dark-50);
+}
+
+footer li:nth-child(4n + 1) a{
+    margin-left: 0;
+}
+
+footer li:nth-child(4n) a{
+    margin-right: 0;
 }

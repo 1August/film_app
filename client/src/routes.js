@@ -1,7 +1,8 @@
 import {WelcomePage} from "./pages/WelcomePage"
-import {Route, Routes} from "react-router-dom"
+import {Routes, Route} from "react-router-dom"
 import {FilmsPage} from "./pages/FilmsPage";
 import {AboutPage} from "./pages/AboutPage";
+import {RegisterPage} from "./pages/RegisterPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated){
@@ -10,7 +11,13 @@ export const useRoutes = isAuthenticated => {
                 <Route path={'/'} element={<WelcomePage/>}/>
                 <Route path={'/films'} element={<FilmsPage/>}/>
                 <Route path={'/about'} element={<AboutPage/>}/>
-                {/*<Redirect to={'/'}/>*/}
+                <Route path={'/register'} element={<RegisterPage/>}/>
+                <Route path={'/account/:id'} element={<h1>Account page</h1>}/>
+
+                {/*<Route path={'/login'} element={<RegisterPage/>}/>*/}
+
+                {/*<RequestAuth/>*/}
+                {/*<Navigation to={'/'}/>*/}
             </Routes>
         )
     }
@@ -20,7 +27,16 @@ export const useRoutes = isAuthenticated => {
             <Route path={'/'} element={<WelcomePage/>}/>
             <Route path={'/films'} element={<FilmsPage/>}/>
             <Route path={'/about'} element={<AboutPage/>}/>
-            {/*<Redirect to={'/'}/>*/}
+            <Route path={'/register'} element={<RegisterPage/>}/>
+
+
+            {/*<Route path={'/account'} element={*/}
+            {/*    <RequireAuth>*/}
+            {/*        <Account/>*/}
+            {/*    </RequireAuth>*/}
+            {/*}/>*/}
+
+            {/*<Navigate to={'/'}/>*/}
         </Routes>
     )
 }

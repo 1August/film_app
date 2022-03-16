@@ -1,4 +1,5 @@
 {
   "port": 5000,
+  "jwtSecret": "some super secret",
   "mongoUri": "mongodb+srv://maksat:maksat@cluster0.8s9wo.mongodb.net/test?retryWrites=true&w=majority"
 }
