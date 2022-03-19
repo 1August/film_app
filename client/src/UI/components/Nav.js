@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-import {useContext} from "react";
+import {useContext, useRef} from "react";
 import {AuthContext} from "../../context/AuthContext"
 
 import '../styles/variables.css'
@@ -17,7 +17,20 @@ export const Nav = () => {
         auth.logout()
     }
 
-    return(
+    // const navLinks = useRef({});
+
+    // const makeActive = el => {
+    //     console.log(navLinks)
+    //     el.classList.add('active')
+    // }
+
+    const expandAccountNav = useRef({})
+
+    const expandAccount = () => {
+        expandAccountNav.current.classList.toggle('show')
+    }
+
+    return (
         <nav>
             <div className="nav__container container">
                 <div className="nav__left">
@@ -27,9 +40,11 @@ export const Nav = () => {
                 </div>
                 <div className="nav__links">
                     <ul>
-                        <li><Link to={'/'}><span className="material-icons" id="homeIcon">&#xe88a;</span> Home</Link></li>
-                        <li><Link to={'/films'}><span className="material-icons" id="filmsIcon">&#xe02c;</span> Films</Link></li>
-                        <li><Link to={'/about'}><span className="material-icons" id="aboutIcon">&#xe8af;</span> About</Link></li>
+                        <li><Link to={'/'}><span className="material-icons" id="homeIcon">&#xe88a;</span>Home</Link></li>
+                        <li><Link to={'/films'}><span className="material-icons" id="filmsIcon">&#xe02c;</span>Films</Link>
+                        </li>
+                        <li><Link to={'/about'}><span className="material-icons" id="aboutIcon">&#xe8af;</span>About</Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="nav__account">
@@ -37,8 +52,16 @@ export const Nav = () => {
                         auth.isAuthenticated ?
                             (
                                 <ul>
-                                    <li><Link to={`/account/${auth.userId}`}>Account <span className={'material-icons'} id={'expandIcon'}>&#xe5c5;</span></Link></li>
-                                    <li><Link to={'/'} onClick={logoutHandler}>Logout</Link></li>
+                                    <li>
+                                        <p onClick={expandAccount}>{/*Account*/} <span className={'material-icons'} id={'expandIcon'}>&#xe853;</span></p>
+
+                                        <div className="expandAccount" ref={expandAccountNav}>
+                                            <ul>
+                                                <li><Link to={`/account/${auth.userId}`}>Account</Link></li>
+                                                <li><Link to={'/'} onClick={logoutHandler}>Logout</Link></li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             ) :
                             (

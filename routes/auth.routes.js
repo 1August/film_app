@@ -6,6 +6,8 @@ const {check, validationResult} = require('express-validator')
 const User = require('../models/User')
 const router = Router()
 
+// const fire = require('../api/firebase')
+
 // /api/auth/register
 router.post(
     '/register',
@@ -67,6 +69,9 @@ router.post(
             const isMatch = await bcrypt.compare(password, user.password).then(res => res)
             if (!isMatch)
                 return res.status(400).json({message: 'Incorrect password. Try again.'})
+
+            // fire.auth().signInWithEmailAndPassword(email, password)
+            //     .catch((e) => console.error('Incorrect username or password');
 
             const token = jwt.sign({userId: user.id}, config.get('jwtSecret'), {expiresIn: '1h'})
 

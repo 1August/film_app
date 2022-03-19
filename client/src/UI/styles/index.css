@@ -8,3 +8,7 @@ main{
     padding: 1rem 0;
     padding: 40rem 0;
 }
+
+p{
+    margin: 0;
+}

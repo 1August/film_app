@@ -9,8 +9,7 @@ nav{
 }
 
 nav .material-icons{
-    position: relative;
-    top: 6px;
+
 }
 
 footer{
@@ -22,7 +21,7 @@ nav .nav__container{
     justify-content: space-between;
     align-items: center;
 
-    gap: 10%;
+    /*gap: clamp(0, 10%);*/
 }
 
 nav ul{
@@ -35,8 +34,15 @@ nav ul{
     align-items: center;
 }
 
+nav li{
+    padding: .25rem .5rem;
+}
+
 nav a{
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-decoration: none;
     color: var(--main-dark);
     padding: .5rem 1rem;
@@ -46,12 +52,19 @@ nav a:hover{
     color: var(--main-dark-50);
 }
 
+a.active:hover{
+    color: var(--main-dark);
+}
+
 .nav__left{
+    justify-self: start;
     /*width: min-content;*/
 }
 
 .nav__left a{
     padding-left: 0;
+
+    justify-content: start;
 }
 
 /*.nav__left img{*/
@@ -64,10 +77,12 @@ nav a:hover{
 
 .nav__links{
     /*width: 70%;*/
+    justify-self: center;
 }
 
 .nav__links a{
     /*padding-right: 0;*/
+    gap: .2rem;
 }
 
 .nav__links{
@@ -78,6 +93,12 @@ nav a:hover{
 .nav__links li:first-of-type{
     border-radius: 100px 0 0 100px;
     background-color: var(--main-sky_blue);
+
+    border-right: 1px solid #000;
+}
+
+.nav__links li:last-of-type{
+    border-left: 1px solid #000;
 }
 
 
@@ -93,11 +114,55 @@ nav a:hover{
 /*}*/
 
 .nav__account{
-
+    justify-self: end;
 }
 
-.nav__account a{
-    padding-right: 0;
+.nav__account ul{
+    justify-content: end;
+}
+
+/*.nav__account:last-child{*/
+/*    padding-right: 0;*/
+/*}*/
+
+.nav__account li:only-child{
+    position: relative;
+}
+
+.nav__account li:only-child:hover{
+    cursor: pointer;
+    user-select: none;
+}
+
+.nav__account > ul p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav__account > ul .material-icons{
+    font-size: 3rem;
+}
+
+.expandAccount{
+    display: none;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + .5rem);
+
+    background-color: #fff;
+    border: 1px solid var(--main-dark);
+    border-radius: 20px;
+}
+
+.expandAccount ul{
+    display: block;
+}
+
+.expandAccount li+li{
+    border-top: 1px solid var(--main-dark);
 }
 
 
@@ -141,4 +206,11 @@ footer li:nth-child(4n + 1) a{
 
 footer li:nth-child(4n) a{
     margin-right: 0;
+}
+
+
+
+
+.show{
+    display: block;
 }
