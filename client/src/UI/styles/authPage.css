@@ -1,0 +1,184 @@
+#auth{
+    height: 100vh;
+    position: relative;
+}
+
+#auth h1{
+    letter-spacing: .3rem;
+}
+
+#auth a{
+    text-decoration: none;
+    float: right;
+}
+
+#auth a:hover{
+    text-decoration: underline;
+}
+
+#auth .container{
+    width: 50%;
+}
+
+form{
+    padding: 1rem 0 2rem 0;
+}
+
+form p{
+    margin: .5rem 0;
+}
+
+input, button{
+    border: 1px solid rgba(var(--main-dark), .6);
+    border-radius: 3px;
+}
+
+input{
+    width: 100%;
+    padding: .5rem;
+    outline: none;
+}
+
+input:invalid{
+    background-color: rgba(200, 0, 0, .3);
+}
+
+label{
+    display: block;
+}
+
+label + label, label + button{
+    margin-top: 1.5rem;
+}
+
+button{
+    background-color: transparent;
+    padding: .5rem;
+}
+
+button:hover{
+    background-color: rgba(var(--secondary-dark), .1);
+}
+
+button:focus{
+    background-color: rgba(var(--secondary-dark), .15);
+}
+
+button:disabled{
+    color: rgba(var(--main-dark), .75);
+}
+
+button:disabled::after{
+    content: ' ...';
+}
+
+.leftSide, .rightSide{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+:is(.leftSide, .rightSide) > *{
+    width: 50%;
+    height: 100%;
+}
+
+:is(.leftSide, .rightSide) :is(.login, .register){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    transition: all .5s ease-in-out;
+}
+
+:is(.leftSide, .rightSide) :is(.loginImg, .registerImg){
+    transition: all .5s ease-in-out;
+}
+
+:is(.leftSide, .rightSide) img{
+    filter: brightness(.9);
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.leftSide{
+    position: absolute;
+    z-index: 3;
+    /*right: -100vw;*/
+}
+
+.login{
+    position: absolute;
+    left: 0;
+}
+
+.hideLoginForm{
+    left: -50vw !important;
+}
+
+.showLoginForm{
+    left: 0 !important;
+}
+
+.loginForm{
+
+}
+
+.loginImg{
+    position: absolute;
+}
+
+.loginImg img{
+    object-position: center right;
+}
+
+.hideLoginImg{
+    right: -50vw !important;
+}
+
+.showLoginImg{
+    right: 0 !important;
+}
+
+.rightSide{
+    position: absolute;
+    z-index: 1;
+    /*left: -100vw;*/
+}
+
+.register{
+    position: absolute;
+}
+
+.hideRegisterForm{
+    right: -50vw !important;
+}
+
+.showRegisterForm{
+    right: 0 !important;
+}
+
+.registerForm{
+
+}
+
+.registerImg{
+    position: absolute;
+}
+
+.registerImg img{
+    object-position: center left;
+}
+
+.hideRegisterImg{
+    left: -50vw !important;
+}
+
+.showRegisterImg{
+    left: 0 !important;
+}

@@ -2,7 +2,9 @@ import {WelcomePage} from "./pages/WelcomePage"
 import {Routes, Route} from "react-router-dom"
 import {FilmsPage} from "./pages/FilmsPage";
 import {AboutPage} from "./pages/AboutPage";
-import {RegisterPage} from "./pages/RegisterPage";
+import {AuthPage} from "./pages/AuthPage";
+import {AccountPage} from "./pages/AccountPage";
+import {MoviePage} from "./pages/MoviePage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated){
@@ -11,10 +13,10 @@ export const useRoutes = isAuthenticated => {
                 <Route path={'/'} element={<WelcomePage/>}/>
                 <Route path={'/films'} element={<FilmsPage/>}/>
                 <Route path={'/about'} element={<AboutPage/>}/>
-                <Route path={'/register'} element={<RegisterPage/>}/>
-                <Route path={'/account/:id'} element={<h1>Account page</h1>}/>
+                <Route path={'/account/:id'} element={<AccountPage/>}/>
+                <Route path={'/movie/:id'} element={<MoviePage/>}/>
 
-                {/*<Route path={'/login'} element={<RegisterPage/>}/>*/}
+                {/*<Route path={'/login'} element={<AuthPage/>}/>*/}
 
                 {/*<RequestAuth/>*/}
                 {/*<Navigation to={'/'}/>*/}
@@ -27,7 +29,8 @@ export const useRoutes = isAuthenticated => {
             <Route path={'/'} element={<WelcomePage/>}/>
             <Route path={'/films'} element={<FilmsPage/>}/>
             <Route path={'/about'} element={<AboutPage/>}/>
-            <Route path={'/register'} element={<RegisterPage/>}/>
+            <Route path={'/auth'} element={<AuthPage/>}/>
+            <Route path={'/movie/:id'} element={<MoviePage/>}/>
 
 
             {/*<Route path={'/account'} element={*/}

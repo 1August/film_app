@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react"
 
 export const useAuth = () => {
     const [token, setToken] = useState(null)
@@ -14,7 +14,7 @@ export const useAuth = () => {
         localStorage.setItem(storageName, JSON.stringify({userId: id, token: jwtToken}))
     }, [])
 
-    const logout = useCallback((jwtToken, id) => {
+    const logout = useCallback(() => {
         setToken(null)
         setUserId(null)
 

@@ -82,4 +82,32 @@ router.post(
     }
 )
 
+// /api/auth/getEmailById
+router.post(
+    '/getEmailById',
+    [
+        // check('id', 'Please, enter correct id').isDecimal()
+    ],
+    async (req, res) => {
+        try {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Incorrect data to get email'
+                })
+            }
+            const { userId } = req.body
+
+            const user = await User.findOne({userId})
+            if (!user)
+                return res.status(400).json({message: 'User do not found'})
+
+            res.json({userId: user.id, email: user.email})
+        } catch (e) {
+            res.status(500).json({message: `Error on getting email`})
+        }
+    }
+)
+
 module.exports = router

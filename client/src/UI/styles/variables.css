@@ -1,8 +1,18 @@
 :root{
-    --main-dark: rgb(51, 51, 51);
-    --main-dark-50: rgba(51, 51, 51, .5);
-    --main-dark-175: rgba(51, 51, 51, .175);
+    --main-dark: 0, 0, 0;
+    --secondary-dark: 51, 51, 51;
+    /*--main-dark-rgb: rgb(51, 51, 51);*/
 
-    --main-white: #f5f5f5;
-    --main-sky_blue: #e6e1ff;
+    /*--main-dark-50: 51, 51, 51;*/
+    /*--main-dark-50-rgb: rgba(51, 51, 51, .5);*/
+
+    /*--main-dark-175-rgb: rgba(51, 51, 51, .175);*/
+    /*--main-dark-175-rgb: rgba(51, 51, 51, .175);*/
+
+    --main-white: 245, 245, 245;
+    /*--main-white: 245, 245, 245;*/
+
+    --main-sky_blue: 230, 225, 255;
+
+    --border-radius: 12px;
 }

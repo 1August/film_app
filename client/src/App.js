@@ -1,9 +1,10 @@
-import {Nav} from "./UI/components/Nav";
-import {useRoutes} from "./routes";
-import {Footer} from "./UI/components/Footer";
-import {useAuth} from "./hooks/auth.hook";
-import {AuthContext} from "./context/AuthContext";
-import {Loader} from "./UI/components/Loader";
+import {Nav} from "./UI/components/Nav"
+import {useRoutes} from "./routes"
+import {Footer} from "./UI/components/Footer"
+import {useAuth} from "./hooks/auth.hook"
+import {AuthContext} from "./context/AuthContext"
+import {Loader} from "./UI/components/Loader"
+import { useLocation } from 'react-router-dom'
 
 import './UI/styles/variables.css'
 import './App.css'
@@ -12,6 +13,8 @@ const App = () => {
     const {login, logout, token, userId, ready} = useAuth()
     const isAuthenticated = !!token
     const routes = useRoutes(isAuthenticated)
+
+    const location = useLocation()
 
     if (!ready) {
         return (
@@ -28,6 +31,9 @@ const App = () => {
                 <main>
                     {routes}
                 </main>
+                {
+                    location.pathname !== '/auth' ? <div id="wave"></div> : ''
+                }
                 <Footer/>
             </div>
         </AuthContext.Provider>

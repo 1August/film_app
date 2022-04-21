@@ -1,4 +1,4 @@
-import '../UI/styles/index.css'
+import '../UI/styles/welcomePage.css'
 
 export const AboutPage = () => {
     return(

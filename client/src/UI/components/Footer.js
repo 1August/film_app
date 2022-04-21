@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom"
 
 import '../styles/variables.css'
-import '../styles/index.css'
+import '../styles/welcomePage.css'
 import '../styles/nav_footer.css'
 
 import logo from '../img/film_app_logo.png'

@@ -1,0 +1,36 @@
+body{
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&family=Ubuntu:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
+    overflow-x: hidden;
+}
+
+img{
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Oswald', sans-serif;
+}
+
+a, p{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container-fluid{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+#wave{
+    filter: drop-shadow(.5rem 0 6px rgba(var(--secondary-dark), .5));
+    width: 100%;
+    height: 300px;
+    background: url(./UI/img/wave.svg) no-repeat bottom left / cover;
+}

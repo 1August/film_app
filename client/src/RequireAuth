@@ -1,0 +1,12 @@
+// import {AuthContext} from "./context/AuthContext"
+// import {useContext} from "react"
+// import {useLocation, useNavigate} from "react-router-dom"
+//
+// export const RequireAuth = ({children, ...props}) => {
+//     const {isAuthenticated} = useContext(AuthContext)
+//     const navigate = useNavigate()
+//     const location = useLocation()
+//
+//     if (isAuthenticated) return children
+//     return navigate('/register')
+// }

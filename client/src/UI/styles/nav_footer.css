@@ -1,27 +1,19 @@
 nav, footer{
-    /*background-color: #333;*/
-    padding: .5rem 0;
-    /*border-bottom: 1px solid #333;*/
+    padding: 1.2rem 0;
 }
 
 nav{
-    border-bottom: 1px solid var(--main-dark-175);
+    border-bottom: 1px solid rgba(var(--main-dark), .175);
 }
 
-nav .material-icons{
-
-}
-
-footer{
-    border-top: 1px solid var(--main-dark-175);
+nav p{
+    margin: 0;
 }
 
 nav .nav__container{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    /*gap: clamp(0, 10%);*/
 }
 
 nav ul{
@@ -34,140 +26,116 @@ nav ul{
     align-items: center;
 }
 
-nav li{
-    padding: .25rem .5rem;
-}
-
-nav a{
+nav a, nav p{
     display: flex;
     justify-content: center;
     align-items: center;
 
     text-decoration: none;
-    color: var(--main-dark);
-    padding: .5rem 1rem;
+    color: rgba(var(--main-dark), 1);
 }
 
 nav a:hover{
-    color: var(--main-dark-50);
+    color: #000;
 }
 
 a.active:hover{
-    color: var(--main-dark);
+    color: rgba(var(--main-dark), 1);
 }
 
 .nav__left{
     justify-self: start;
-    /*width: min-content;*/
 }
 
 .nav__left a{
-    padding-left: 0;
+    /*padding: 1rem;*/
 
     justify-content: start;
 }
 
-/*.nav__left img{*/
-/*    width: 100px;*/
-/*}*/
+.nav__left a:hover{
+    filter: drop-shadow(0 0 15px rgba(51, 51, 51, .3));
+}
 
 #logo{
     width: 40px;
 }
 
-.nav__links{
-    /*width: 70%;*/
-    justify-self: center;
+.nav__links ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
 }
 
-.nav__links a{
-    /*padding-right: 0;*/
+.nav__links ul{
+
+}
+
+.nav__links a, .nav__links p{
+    padding: .5rem 1rem;
     gap: .2rem;
 }
 
-.nav__links{
-    border: 1px solid var(--main-dark);
-    border-radius: 100px;
+.nav__links > ul > li:hover{
+    color: #000;
+    background-color: rgba(var(--main-sky_blue), 1);
 }
 
-.nav__links li:first-of-type{
-    border-radius: 100px 0 0 100px;
-    background-color: var(--main-sky_blue);
-
-    border-right: 1px solid #000;
-}
-
-.nav__links li:last-of-type{
-    border-left: 1px solid #000;
-}
-
-
-/* NEED TO ADD ACTIVE CLASS TO THE LINKS */
-
-/*.nav__links li:last-of-type a:has(.active){*/
-/*    border-radius: 0 100px 100px 0;*/
-/*    background-color: var(--main-sky_blue);*/
-/*}*/
-
-/*.nav__links li:not(:first-of-type, :last-of-type){*/
-/*    background-color: var(--main-sky_blue);*/
-/*}*/
-
-.nav__account{
-    justify-self: end;
-}
-
-.nav__account ul{
-    justify-content: end;
-}
-
-/*.nav__account:last-child{*/
-/*    padding-right: 0;*/
-/*}*/
-
-.nav__account li:only-child{
+.nav__links > ul > li:last-of-type{
     position: relative;
 }
 
-.nav__account li:only-child:hover{
+.nav__links > ul > li:last-of-type:hover{
     cursor: pointer;
     user-select: none;
-}
-
-.nav__account > ul p{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav__account > ul .material-icons{
-    font-size: 3rem;
 }
 
 .expandAccount{
     display: none;
 
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 10;
+    right: 50%;
+    transform: translateX(50%);
     top: calc(100% + .5rem);
 
     background-color: #fff;
-    border: 1px solid var(--main-dark);
+    border: 1px solid rgba(0, 0, 0, .1);
     border-radius: 20px;
+    box-shadow: .1rem .1rem 15px rgba(0, 0, 0, .25);
+}
+
+.expandAccount a{
+    padding: .75rem 1.5rem;
 }
 
 .expandAccount ul{
     display: block;
 }
 
+.expandAccount li:first-of-type{
+    border-radius: 20px 20px 0 0;
+}
+
+.expandAccount li:last-of-type{
+    border-radius: 0 0 20px 20px;
+}
+
+.expandAccount li:hover{
+    background-color: rgba(var(--main-sky_blue), 1);
+}
+
 .expandAccount li+li{
-    border-top: 1px solid var(--main-dark);
+    border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
 
 
 
+footer{
+    border-top: 1px solid rgba(var(--main-dark), .175);
+}
 
 footer img{
     width: 100px;
@@ -189,15 +157,14 @@ footer li:not(:nth-child(4n + 1)){
 }
 
 footer a{
-    /*display: block;*/
     margin: .5rem 1rem;
 
     text-decoration: none;
-    color: var(--main-dark);
+    color: rgba(var(--main-dark), 1);
 }
 
 footer a:hover{
-    color: var(--main-dark-50);
+    color: rgba(var(--main-dark), .5);
 }
 
 footer li:nth-child(4n + 1) a{
