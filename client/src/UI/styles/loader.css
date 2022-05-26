@@ -1,0 +1,9 @@
+#loader .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loaderGIF{
+    width: 50%;
+}

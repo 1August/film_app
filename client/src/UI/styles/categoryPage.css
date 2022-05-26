@@ -1,0 +1,19 @@
+#categoryPage{
+
+}
+
+#categoryPage .cardsList{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    grid-gap: 2rem;
+
+}
+
+#categoryPage .card{
+
+}
+
+#categoryPage .movieDescription{
+    display: none;
+}

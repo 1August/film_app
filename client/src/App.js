@@ -1,9 +1,9 @@
-import {Nav} from "./UI/components/Nav"
+import {Nav} from "./components/Nav"
 import {useRoutes} from "./routes"
-import {Footer} from "./UI/components/Footer"
+import {Footer} from "./components/Footer"
 import {useAuth} from "./hooks/auth.hook"
 import {AuthContext} from "./context/AuthContext"
-import {Loader} from "./UI/components/Loader"
+import {Loader} from "./components/Loader"
 import { useLocation } from 'react-router-dom'
 
 import './UI/styles/variables.css'
@@ -32,7 +32,7 @@ const App = () => {
                     {routes}
                 </main>
                 {
-                    location.pathname !== '/auth' ? <div id="wave"></div> : ''
+                    location.pathname !== '/auth' ? <div id="wave"/> : ''
                 }
                 <Footer/>
             </div>

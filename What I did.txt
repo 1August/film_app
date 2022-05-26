@@ -1,0 +1,471 @@
+Microsoft Windows [Version 10.0.19044.1645]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\L>firebase login
+i  Firebase optionally collects CLI usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+
+? Allow Firebase to collect CLI usage and error reporting information? Yes
+i  To change your data collection preference at any time, run `firebase logout` and log in again.
+
+Visit this URL on this device to log in:
+https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=489420196&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+
+Waiting for authentication...
+
++  Success! Logged in as boktaban@gmail.com
+
+C:\Users\L>cd..
+
+C:\Users>cd..
+
+C:\>cd..
+
+C:\>cd L
+The system cannot find the path specified.
+
+C:\>user L
+'user' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\>L:
+
+L:\>ls
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+L:\>help
+For more information on a specific command, type HELP command-name
+ASSOC          Displays or modifies file extension associations.
+ATTRIB         Displays or changes file attributes.
+BREAK          Sets or clears extended CTRL+C checking.
+BCDEDIT        Sets properties in boot database to control boot loading.
+CACLS          Displays or modifies access control lists (ACLs) of files.
+CALL           Calls one batch program from another.
+CD             Displays the name of or changes the current directory.
+CHCP           Displays or sets the active code page number.
+CHDIR          Displays the name of or changes the current directory.
+CHKDSK         Checks a disk and displays a status report.
+CHKNTFS        Displays or modifies the checking of disk at boot time.
+CLS            Clears the screen.
+CMD            Starts a new instance of the Windows command interpreter.
+COLOR          Sets the default console foreground and background colors.
+COMP           Compares the contents of two files or sets of files.
+COMPACT        Displays or alters the compression of files on NTFS partitions.
+CONVERT        Converts FAT volumes to NTFS.  You cannot convert the
+               current drive.
+COPY           Copies one or more files to another location.
+DATE           Displays or sets the date.
+DEL            Deletes one or more files.
+DIR            Displays a list of files and subdirectories in a directory.
+DISKPART       Displays or configures Disk Partition properties.
+DOSKEY         Edits command lines, recalls Windows commands, and
+               creates macros.
+DRIVERQUERY    Displays current device driver status and properties.
+ECHO           Displays messages, or turns command echoing on or off.
+ENDLOCAL       Ends localization of environment changes in a batch file.
+ERASE          Deletes one or more files.
+EXIT           Quits the CMD.EXE program (command interpreter).
+FC             Compares two files or sets of files, and displays the
+               differences between them.
+FIND           Searches for a text string in a file or files.
+FINDSTR        Searches for strings in files.
+FOR            Runs a specified command for each file in a set of files.
+FORMAT         Formats a disk for use with Windows.
+FSUTIL         Displays or configures the file system properties.
+FTYPE          Displays or modifies file types used in file extension
+               associations.
+GOTO           Directs the Windows command interpreter to a labeled line in
+               a batch program.
+GPRESULT       Displays Group Policy information for machine or user.
+GRAFTABL       Enables Windows to display an extended character set in
+               graphics mode.
+HELP           Provides Help information for Windows commands.
+ICACLS         Display, modify, backup, or restore ACLs for files and
+               directories.
+IF             Performs conditional processing in batch programs.
+LABEL          Creates, changes, or deletes the volume label of a disk.
+MD             Creates a directory.
+MKDIR          Creates a directory.
+MKLINK         Creates Symbolic Links and Hard Links
+MODE           Configures a system device.
+MORE           Displays output one screen at a time.
+MOVE           Moves one or more files from one directory to another
+               directory.
+OPENFILES      Displays files opened by remote users for a file share.
+PATH           Displays or sets a search path for executable files.
+PAUSE          Suspends processing of a batch file and displays a message.
+POPD           Restores the previous value of the current directory saved by
+               PUSHD.
+PRINT          Prints a text file.
+PROMPT         Changes the Windows command prompt.
+PUSHD          Saves the current directory then changes it.
+RD             Removes a directory.
+RECOVER        Recovers readable information from a bad or defective disk.
+REM            Records comments (remarks) in batch files or CONFIG.SYS.
+REN            Renames a file or files.
+RENAME         Renames a file or files.
+REPLACE        Replaces files.
+RMDIR          Removes a directory.
+ROBOCOPY       Advanced utility to copy files and directory trees
+SET            Displays, sets, or removes Windows environment variables.
+SETLOCAL       Begins localization of environment changes in a batch file.
+SC             Displays or configures services (background processes).
+SCHTASKS       Schedules commands and programs to run on a computer.
+SHIFT          Shifts the position of replaceable parameters in batch files.
+SHUTDOWN       Allows proper local or remote shutdown of machine.
+SORT           Sorts input.
+START          Starts a separate window to run a specified program or command.
+SUBST          Associates a path with a drive letter.
+SYSTEMINFO     Displays machine specific properties and configuration.
+TASKLIST       Displays all currently running tasks including services.
+TASKKILL       Kill or stop a running process or application.
+TIME           Displays or sets the system time.
+TITLE          Sets the window title for a CMD.EXE session.
+TREE           Graphically displays the directory structure of a drive or
+               path.
+TYPE           Displays the contents of a text file.
+VER            Displays the Windows version.
+VERIFY         Tells Windows whether to verify that your files are written
+               correctly to a disk.
+VOL            Displays a disk volume label and serial number.
+XCOPY          Copies files and directory trees.
+WMIC           Displays WMI information inside interactive command shell.
+
+For more information on tools see the command-line reference in the online help.
+
+L:\>dir
+ Volume in drive L is HDD
+ Volume Serial Number is F0E8-0791
+
+ Directory of L:\
+
+10/05/2021  22:34    <DIR>          DeliveryOptimization
+26/01/2022  03:19    <DIR>          from my flash
+01/02/2022  02:09    <DIR>          L
+23/09/2005  00:39           894,976 msdia80.dll
+19/09/2021  12:52    <DIR>          Program Files
+18/09/2021  18:04    <DIR>          PSAutoRecover
+22/10/2021  19:45    <DIR>          WindowsApps
+10/05/2021  22:54    <DIR>          WpSystem
+24/10/2021  14:04    <DIR>          WUDownloadCache
+               1 File(s)        894,976 bytes
+               8 Dir(s)  519,395,807,232 bytes free
+
+L:\>cd L/L/L
+The system cannot find the path specified.
+
+L:\>cd L
+
+L:\L>cd Documents
+
+L:\L\Documents>cd Webstorm_Projects
+
+L:\L\Documents\Webstorm_Projects>cd film_app
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  L:\L\Documents\Webstorm_Projects\film_app
+
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your ch
+oices.
+
+Error: Must select at least one feature. Use SPACEBAR to select features, or specify a feature by running firebase init [feature_name]
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  L:\L\Documents\Webstorm_Projects\film_app
+
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your ch
+oices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add,
+but for now we'll just set up a default project.
+
+? Please select an option: Use an existing project
+? Select a default Firebase project for this directory: film-app-7c168 (Film app)
+i  Using project film-app-7c168 (Film app)
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build's output directory.
+
+? What do you want to use as your public directory? public
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? Yes
++  Wrote public/index.html
+
+i  Detected a .git folder at L:\L\Documents\Webstorm_Projects\film_app
+i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store.
+
+Visit this URL on this device to log in:
+https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=965142736&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+
+Waiting for authentication...
+
++  Success! Logged into GitHub as 1August
+
+? For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository) 1August/film_app
+
++  Created service account github-action-468628797 with Firebase Hosting admin permissions.
++  Uploaded service account JSON to GitHub as secret FIREBASE_SERVICE_ACCOUNT_FILM_APP_7C168.
+i  You can manage your secrets at https://github.com/1August/film_app/settings/secrets.
+
+? Set up the workflow to run a build script before every deploy? Yes
+? What script should be run before every deploy? (npm ci && npm run build)
+? What script should be run before every deploy? npm ci && npm run dev
+
++  Created workflow file L:\L\Documents\Webstorm_Projects\film_app\.github/workflows/firebase-hosting-pull-request.yml
+? Set up automatic deployment to your site's live channel when a PR is merged? No
+
+i  Action required: Visit this URL to revoke authorization for the Firebase CLI GitHub OAuth App:
+https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+i  Action required: Push any new workflow file(s) to your repo
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
++  Firebase initialization complete!
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase deploy
+
+=== Deploying to 'film-app-7c168'...
+
+i  deploying hosting
+i  hosting[film-app-7c168]: beginning deploy...
+i  hosting[film-app-7c168]: found 1 files in public
++  hosting[film-app-7c168]: file upload complete
+i  hosting[film-app-7c168]: finalizing version...
++  hosting[film-app-7c168]: version finalized
+i  hosting[film-app-7c168]: releasing new version...
++  hosting[film-app-7c168]: release complete
+
++  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/film-app-7c168/overview
+Hosting URL: https://film-app-7c168.web.app
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  L:\L\Documents\Webstorm_Projects\film_app
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your ch
+oices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add,
+but for now we'll just set up a default project.
+
+i  Using project film-app-7c168 (Film app)
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build's output directory.
+
+? What do you want to use as your public directory? client/public
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? No
+? File client/public/index.html already exists. Overwrite? No
+i  Skipping write of client/public/index.html
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
++  Firebase initialization complete!
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase deploy
+
+=== Deploying to 'film-app-7c168'...
+
+i  deploying hosting
+i  hosting[film-app-7c168]: beginning deploy...
+i  hosting[film-app-7c168]: found 1 files in client/public
++  hosting[film-app-7c168]: file upload complete
+i  hosting[film-app-7c168]: finalizing version...
++  hosting[film-app-7c168]: version finalized
+i  hosting[film-app-7c168]: releasing new version...
++  hosting[film-app-7c168]: release complete
+
++  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/film-app-7c168/overview
+Hosting URL: https://film-app-7c168.web.app
+
+L:\L\Documents\Webstorm_Projects\film_app>cd..
+
+L:\L\Documents\Webstorm_Projects>cd film_app
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  L:\L\Documents\Webstorm_Projects\film_app
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your ch
+oices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add,
+but for now we'll just set up a default project.
+
+i  Using project film-app-7c168 (Film app)
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build's output directory.
+
+? What do you want to use as your public directory? client/build
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? No
+? File client/build/index.html already exists. Overwrite? No
+i  Skipping write of client/build/index.html
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
++  Firebase initialization complete!
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase deploy
+
+=== Deploying to 'film-app-7c168'...
+
+i  deploying hosting
+i  hosting[film-app-7c168]: beginning deploy...
+i  hosting[film-app-7c168]: found 18 files in client/build
++  hosting[film-app-7c168]: file upload complete
+i  hosting[film-app-7c168]: finalizing version...
++  hosting[film-app-7c168]: version finalized
+i  hosting[film-app-7c168]: releasing new version...
++  hosting[film-app-7c168]: release complete
+
++  Deploy complete!
+
+Project Console: https://console.firebase.google.com/project/film-app-7c168/overview
+Hosting URL: https://film-app-7c168.web.app
+
+L:\L\Documents\Webstorm_Projects\film_app>firebase init
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  L:\L\Documents\Webstorm_Projects\film_app
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+? Are you ready to proceed? Yes
+? Which Firebase features do you want to set up for this directory? Press Space to select features, then Enter to confirm your ch
+oices. Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub Action deploys
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add,
+but for now we'll just set up a default project.
+
+i  Using project film-app-7c168 (Film app)
+
+=== Hosting Setup
+
+Your public directory is the folder (relative to your project directory) that
+will contain Hosting assets to be uploaded with firebase deploy. If you
+have a build process for your assets, use your build's output directory.
+
+? What do you want to use as your public directory? client/build
+? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+? Set up automatic builds and deploys with GitHub? Yes
+? File client/build/index.html already exists. Overwrite? No
+i  Skipping write of client/build/index.html
+
+i  Detected a .git folder at L:\L\Documents\Webstorm_Projects\film_app
+i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store.
+
+Visit this URL on this device to log in:
+https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=12957582&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+
+Waiting for authentication...
+
++  Success! Logged into GitHub as 1August
+
+? For which GitHub repository would you like to set up a GitHub workflow? (format: user/repository) 1August/film_app
+
++  Created service account github-action-468628797 with Firebase Hosting admin permissions.
++  Uploaded service account JSON to GitHub as secret FIREBASE_SERVICE_ACCOUNT_FILM_APP_7C168.
+i  You can manage your secrets at https://github.com/1August/film_app/settings/secrets.
+
+? Set up the workflow to run a build script before every deploy? Yes
+? What script should be run before every deploy? (npm ci && npm run build) npm ci && npm run build
+? What script should be run before every deploy? npm ci && npm run build
+? GitHub workflow file for PR previews exists. Overwrite? firebase-hosting-pull-request.yml No
+? Set up automatic deployment to your site's live channel when a PR is merged? No
+
+i  Action required: Visit this URL to revoke authorization for the Firebase CLI GitHub OAuth App:
+https://github.com/settings/connections/applications/89cf50f02ac6aaed3484
+i  Action required: Push any new workflow file(s) to your repo
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
++  Firebase initialization complete!
+
+L:\L\Documents\Webstorm_Projects\film_app>

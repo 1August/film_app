@@ -29,8 +29,14 @@ a, p{
 
 
 #wave{
-    filter: drop-shadow(.5rem 0 6px rgba(var(--secondary-dark), .5));
+    /*filter: drop-shadow(.5rem 0 6px rgba(var(--secondary-dark), .5));*/
     width: 100%;
     height: 300px;
     background: url(./UI/img/wave.svg) no-repeat bottom left / cover;
+}
+
+.errorMsg{
+    color: red;
+    margin: 0;
+    padding: .25rem 0;
 }

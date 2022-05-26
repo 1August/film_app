@@ -1,0 +1,50 @@
+.swiper{
+    overflow: unset !important;
+    user-select: none;
+}
+
+.swiper-wrapper{
+    padding-bottom: 1.5rem;
+}
+
+.swiper-slide{
+    aspect-ratio: 9 / 16;
+    border-radius: 10px;
+}
+
+/* MovieCard styles */
+.swiper-slide a{
+    display: block;
+    height: 100%;
+
+    transition: opacity .5s ease-in-out;
+    opacity: .85;
+}
+
+.swiper-slide a:hover{
+    opacity: 1;
+}
+
+.swiper-slide img{
+    border-radius: 10px;
+    box-shadow: 0.5rem 0.5rem 15px rgba(var(--secondary-dark), .3);
+    object-fit: cover;
+}
+
+.movieDescription{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+
+    padding: .5rem 0;
+}
+
+.movieDescription :is(h1, h2, h3, h4, h5, h6){
+
+}
+
+.movieDescription .rate{
+    color: rgba(var(--secondary-dark), .8);
+    text-decoration: underline;
+}

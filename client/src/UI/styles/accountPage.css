@@ -1,0 +1,68 @@
+#account{
+    padding: 4rem 0;
+}
+
+#account .container{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.account{
+    width: 30%;
+}
+
+.accountImg{
+    margin-bottom: 3rem;
+}
+
+.accountImg img{
+    border-radius: 100%;
+    aspect-ratio: 1;
+    object-position: center;
+}
+
+.details{
+    width: 60%;
+}
+
+.details h2{
+    margin-top: 0;
+}
+
+.favoriteList{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.favoriteItem{
+    display: flex;
+    justify-content: space-between;
+    /*align-items: center;*/
+    gap: 2rem;
+    padding: 2rem 0 1rem;
+}
+
+.favoriteItem + .favoriteItem{
+    /*margin-top: 1rem;*/
+    border-top: 1px solid rgba(var(--secondary-dark), .15);
+}
+
+.favoriteItem :is(h1, h2, h3, h4, h5, h6){
+    margin: 0;
+}
+
+.movieImg{
+    width: 25%;
+}
+
+.movieImg img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.movieDetails{
+    width: calc(75% - 2rem);
+}

@@ -8,6 +8,13 @@ import leftPict from '../UI/img/MK-movie-left.jpg'
 import rightPict from '../UI/img/MK-movie-right.jpg'
 
 export const AuthPage = () => {
+    const {loading, error, request, clearError} = useHttp()
+
+    const [form, setForm] = useState({ registerEmail: '', registerPassword: '', loginEmail: '', loginPassword: '' })
+    const formChangeHandler = e => {
+        setForm({...form, [e.target.name]: e.target.value})
+    }
+
     const auth = useContext(AuthContext)
     const navigate = useNavigate()
 
@@ -18,35 +25,51 @@ export const AuthPage = () => {
     const left = useRef({})
     const right = useRef({})
 
-    const [form, setForm] = useState({ registerEmail: '', registerPassword: '', loginEmail: '', loginPassword: '' })
-
-    const formChangeHandler = e => {
-        setForm({...form, [e.target.name]: e.target.value})
-    }
-
-    const {loading, error, request} = useHttp()
-
     const registerHandler = async () => {
         try{
             const url = '/api/auth/register'
             const data = await request(url, 'POST', {email: form.registerEmail, password: form.registerPassword})
-            console.log('Data', data)
-
-            await loginHandler()
+            await loginAfterRegister()
         } catch (e){
             console.error(e)
+            setTimeout(() => clearError(), 2000)
         }
     }
-
+    const loginAfterRegister = async () => {
+        try {
+            const url = '/api/auth/login'
+            const data = await request(url, 'POST', {email: form.registerEmail, password: form.registerPassword})
+            auth.login(data.token, data.userId)
+            navigate('/')
+        } catch (e) {
+            console.error(e)
+            setTimeout(() => clearError(), 2000)
+        }
+    }
     const loginHandler = async () => {
         try{
             const url = '/api/auth/login'
+            console.log('log', form.loginEmail, form.loginPassword)
+            console.log('reg', form.registerEmail, form.registerPassword)
+
             const data = await request(url, 'POST', {email: form.loginEmail, password: form.loginPassword})
             auth.login(data.token, data.userId)
             navigate('/')
         } catch (e){
             console.error(e)
+            setTimeout(() => clearError(), 2000)
         }
+    }
+    const loginWithGoogle = async e => {
+        // try {
+        //     const ur l = '/api/auth/loginWithGoogle'
+        //     const data = await request(url)
+        //     auth.login('here', data.token, data.userId)
+        //     navigate('/')
+        // } catch (e) {
+        //     console.error(e)
+        //     setTimeout(() => clearError(), 2000)
+        // }
     }
 
     const goSignIn = e => {
@@ -65,7 +88,6 @@ export const AuthPage = () => {
         left.current.style.zIndex = '3'
         right.current.style.zIndex = '1'
     }
-
     const goSignUp = e => {
         e.preventDefault()
 
@@ -83,18 +105,12 @@ export const AuthPage = () => {
         right.current.style.zIndex = '3'
     }
 
-    useEffect(() => {
-        // scroll to height on reload
-        // window.scrollTo(0, left.current.)
-        // window.scrollY =
-    })
-
-
     return(
         <section id={'auth'}>
             <div className="leftSide" ref={left}>
                 <div className="login showLoginForm" ref={loginForm}>
                     <h1>Login</h1>
+                    { error ? <h3 className={'errorMsg'}>Wrong values to sign in.</h3> : '' }
                     <div className="container">
                         <form className={'loginForm'}>
                             <label htmlFor="loginEmail">
@@ -105,7 +121,10 @@ export const AuthPage = () => {
                                 <p>Password</p>
                                 <input type="password" id={'loginPassword'} value={form.loginPassword} onChange={formChangeHandler} placeholder={'password'} name={'loginPassword'}/>
                             </label>
-                            <button type={'submit'} onClick={loginHandler} disabled={loading}>Login</button>
+                            <div className="btns">
+                                <button type={'submit'} onClick={loginHandler} disabled={loading}>Login</button>
+                                <button onClick={loginWithGoogle}>Google account</button>
+                            </div>
                         </form>
                         <a href={'/register'} onClick={goSignUp}>Sign up</a>
                     </div>
@@ -117,6 +136,7 @@ export const AuthPage = () => {
             <div className="rightSide" ref={right}>
                 <div className="register hideRegisterForm" ref={registerForm}>
                     <h1>Register</h1>
+                    { error ? <h3 className={'errorMsg'}>Wrong values to sign up.</h3> : '' }
                     <div className="container">
                         <form className={'registerForm'}>
                             <label htmlFor="registerEmail">
@@ -127,7 +147,9 @@ export const AuthPage = () => {
                                 <p>Password</p>
                                 <input type="password" id={'registerPassword'} value={form.registerPassword} onChange={formChangeHandler} placeholder={'password'} name={'registerPassword'}/>
                             </label>
-                            <button type={'submit'} onClick={registerHandler} disabled={loading}>Register</button>
+                            <div className="btns">
+                                <button type={'submit'} onClick={registerHandler} disabled={loading}>Register</button>
+                            </div>
                         </form>
                         <a href={'/login'} onClick={goSignIn}>Sign in</a>
                     </div>

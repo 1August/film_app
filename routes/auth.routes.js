@@ -1,12 +1,31 @@
-const { Router } = require('express')
+const {Router} = require('express')
+const {check, validationResult} = require('express-validator')
+const router = Router()
+
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
-const {check, validationResult} = require('express-validator')
-const User = require('../models/User')
-const router = Router()
 
-// const fire = require('../api/firebase')
+const User = require('../models/User')
+
+const mongoose = require('mongoose')
+const getJSON = mongooseCode => JSON.parse(JSON.stringify(mongooseCode))
+
+const firebase = require('firebase/app')
+const {getAuth, GoogleAuthProvider, signInWithPopup} = require('firebase/auth')
+
+const firebaseConfig = {
+    apiKey: "AIzaSyB0Pg43yGladZhKFaS4_PqnDi-emi3FGP8",
+    authDomain: "sandwich-941b8.firebaseapp.com",
+    projectId: "sandwich-941b8",
+    storageBucket: "sandwich-941b8.appspot.com",
+    messagingSenderId: "735368375619",
+    appId: "1:735368375619:web:63bede89a51ad2098113f6"
+}
+
+firebase.initializeApp(firebaseConfig)
+const auth = getAuth()
+const googleProvider = new GoogleAuthProvider()
 
 // /api/auth/register
 router.post(
@@ -19,7 +38,7 @@ router.post(
         try {
             const errors = validationResult(req)
 
-            if (!errors.isEmpty()){
+            if (!errors.isEmpty()) {
                 return res.status(400).json({
                     errors: errors.array(),
                     message: 'Incorrect data to register'
@@ -35,11 +54,10 @@ router.post(
             const user = new User({email, password: hashedPassword})
 
             await user.save()
-            // console.log(user)
 
             res.status(201).json('User created.')
         } catch (e) {
-            res.status(500).json({message: `Error in auth.routes`})
+            return res.status(500).json({message: `Error in auth.routes`})
         }
     }
 )
@@ -70,24 +88,58 @@ router.post(
             if (!isMatch)
                 return res.status(400).json({message: 'Incorrect password. Try again.'})
 
-            // fire.auth().signInWithEmailAndPassword(email, password)
-            //     .catch((e) => console.error('Incorrect username or password');
-
-            const token = jwt.sign({userId: user.id}, config.get('jwtSecret'), {expiresIn: '1h'})
-
+            const token = jwt.sign({userId: user.id}, config.get('jwtSecret'), {expiresIn: '2h'})
             res.json({token, userId: user.id})
         } catch (e) {
-            res.status(500).json({message: `Error in auth.routes`})
+            return res.status(500).json({message: `Error in auth.routes`})
         }
     }
 )
 
-// /api/auth/getEmailById
+// /api/auth/loginWithGoogle
+router.get(
+    '/loginWithGoogle',
+    [],
+    async (req, res) => {
+        try {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Incorrect data to login'
+                })
+            }
+
+            signInWithPopup(auth, googleProvider)
+                .then((userCredential) => {
+                    const user = userCredential.user
+                    if (!user)
+                        return res.status(400).json({message: 'User do not found'})
+
+                    const token = jwt.sign({userId: user.uid}, config.get('jwtSecret'), {expiresIn: '1h'})
+                    res.json({token, userId: user.id})
+                })
+                .catch(e => {
+                    console.error(e)
+                })
+        } catch (e) {
+            return res.status(500).json({message: `Error in auth.routes`})
+        }
+    }
+)
+
+// /api/auth/getUsers
+router.get(
+    '/getUsers',
+    [],
+    async (req, res) => res.json(await User.find())
+)
+
+
+// /api/auth/getUserById
 router.post(
-    '/getEmailById',
-    [
-        // check('id', 'Please, enter correct id').isDecimal()
-    ],
+    '/getUserById',
+    [],
     async (req, res) => {
         try {
             const errors = validationResult(req)
@@ -97,15 +149,86 @@ router.post(
                     message: 'Incorrect data to get email'
                 })
             }
-            const { userId } = req.body
+            const {userId} = req.body
 
-            const user = await User.findOne({userId})
+            const user = await User.findById(mongoose.Types.ObjectId(`${userId}`))
+            if (!user)
+                return res.status(400).json({message: 'User do not found'})
+            return res.json({userId: user.id, email: user.email, favoriteMovies: user.favoriteMovies})
+        } catch (e) {
+            return res.status(500).json({message: `Error on getting email`})
+        }
+    }
+)
+
+// /api/auth/getFavorites?userId=0
+router.get(
+    '/getFavorites',
+    [],
+    async (req, res) => {
+        try {
+            const userId = req.query.userId
+            const user = await User.findById(userId)
+
+            if (!user)
+                return res.status(400).json({message: 'User do not found'})
+            const favMovies = getJSON(await User.findOne({_id: mongoose.Types.ObjectId(userId)}, {favoriteMovies: 1})).favoriteMovies
+
+            return res.status(201).json(favMovies)
+        } catch (e){
+            console.log(e)
+        }
+    }
+)
+
+// /api/auth/isFavoriteMovie?userId=0&movieId=0
+router.get(
+    'isFavoriteMovie',
+    [],
+    async (req, res) => {
+        try{
+            const [userId, movieId] = [req.query.userId, req.query.movieId]
+            console.log(userId, movieId)
+
+            const user = getJSON(User.findById(userId))
+            console.log('favs', user.favoriteMovies)
+            // const isFavorite = user.favoriteMovies
+        }catch (e){
+            console.log(e)
+        }
+    }
+)
+
+// /api/auth/addToFavoriteMovies
+router.post(
+    '/addToFavoriteMovies',
+    [],
+    async (req, res) => {
+        try {
+            const errors = validationResult(req)
+            if (!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Incorrect data to get email'
+                })
+            }
+            const { userId, movieId } = req.body
+
+            const user = await User.findById(mongoose.Types.ObjectId(userId))
+
             if (!user)
                 return res.status(400).json({message: 'User do not found'})
 
-            res.json({userId: user.id, email: user.email})
+            const favMovies = getJSON(user).favoriteMovies.filter(movie => movie.hasOwnProperty('movieId'))
+            user.favoriteMovies = [
+                ...getJSON(favMovies),
+                { movieId }
+            ]
+            await user.save()
+
+            return res.json({ deleted: false, added: true })
         } catch (e) {
-            res.status(500).json({message: `Error on getting email`})
+            return res.status(500).json({message: `Error on adding to favorites`})
         }
     }
 )

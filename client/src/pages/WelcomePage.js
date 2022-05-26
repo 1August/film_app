@@ -13,7 +13,64 @@ import justice from '../UI/img/movies/justice.jpg'
 import vivo from '../UI/img/movies/vivo.jpg'
 import venom from '../UI/img/movies/venom.jpg'
 
+import {useHttp} from "../hooks/http.hook"
+
+import {MovieCategorySlider} from "../components/MovieCategorySlider"
+import {Swiper} from "swiper/react"
+import {Autoplay, Lazy, Pagination} from "swiper"
+import {MySwiper} from "../components/MySwiper";
+import {Loader} from "../components/Loader";
+
 export const WelcomePage = ({genre = 'popular', page = 1}) => {
+    // constants
+    const API_KEY = 'da0213edba5ce29d325c43cfec6aeab5'
+    // const swiperConfig = {
+    //     categoryName: '',
+    //     slidesPerView: 4.5,
+    //     spaceBetween: 25,
+    //     loop: true,
+    //     pagination: {
+    //         dynamicBullets: true
+    //     },
+    //     modules: [Lazy, Pagination, Autoplay],
+    //     coverflowEffect: {
+    //         rotate: 50,
+    //         stretch: 0,
+    //         depth: 100,
+    //         modifier: 1,
+    //         slideShadows: true,
+    //     },
+    //     autoplay: {
+    //         delay: 8000,
+    //         disableOnInteraction: false,
+    //     }
+    // }
+
+    // own hooks
+    const {loading, error, request, clearError} = useHttp()
+
+    // useStates
+    const [popularMovies, setPopularMovies] = useState([])
+
+    // useEffects
+    useEffect(async () => {
+        const tempPopularMovies = []
+        const totalPages = 5
+        for (let i = 1; i <= totalPages; i++){
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=release_date.desc&include_video&page=${i}&language=en-US`
+            const data = await request(url)
+            // console.log(data.results)
+            tempPopularMovies.push(...data.results.filter(el => el.backdrop_path || el.poster_path))
+        }
+        setPopularMovies(tempPopularMovies)
+    }, [])
+
+    /**
+     * Returns image URL of background
+     * @param imgUrl
+     * @returns {`https://image.tmdb.org/t/p/original${string}`}
+     */
+    const getBackdropImgLink = imgUrl => `https://image.tmdb.org/t/p/original${imgUrl}`
 
     return (
         <div id="welcomePage">
@@ -71,63 +128,26 @@ export const WelcomePage = ({genre = 'popular', page = 1}) => {
                     </p>
                 </div>
             </section>
-            <div className="delimiter"></div>
+            <div className="delimiter"/>
 
             <section className="cardsSection">
                 <div className="container">
                     <h1>Top movies</h1>
-                    <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, harum.</h3>
-                    <div className="cards">
-                        <div className="card">
-                            <div className="cardImg">
-                                <img src={venom} alt="card" />
-                            </div>
-                            <div className="cardText">
-                                <div className="textPart">
-                                    <h3>Lorem ipsum dolor sit.</h3>
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda at blanditiis
-                                        doloribus ex ipsam, magni nemo nobis nostrum placeat quisquam quo quod recusandae
-                                        saepe temporibus unde. Dicta tenetur ut voluptates.</p>
-                                </div>
-                                <a href="#">See more</a>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="cardImg">
-                                <img src={blackAdam} alt="card" />
-                            </div>
-                            <div className="cardText">
-                                <div className="textPart">
-                                    <h3>Lorem ipsum dolor sit.</h3>
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda, beatae
-                                        consequuntur corporis dolorem ex facere laborum molestias omnis, perspiciatis quos
-                                        tempora veritatis voluptatum? Alias distinctio dolorem illum inventore laboriosam
-                                        natus optio quisquam voluptatum? Adipisci aliquid, at atque exercitationem illo
-                                        iusto maiores maxime necessitatibus neque obcaecati possimus provident quis
-                                        voluptatum!</p>
-                                </div>
-                                <a href="#">See more</a>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="cardImg">
-                                <img src={spiderMan} alt="card" />
-                            </div>
-                            <div className="cardText">
-                                <div className="textPart">
-                                    <h3>Lorem ipsum dolor sit.</h3>
-                                    <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum deserunt eos ipsum
-                                        nulla quaerat quod totam ut vitae! Alias aspernatur consectetur cupiditate dolores
-                                        error, explicabo facilis, harum perspiciatis quasi quod repellendus sed soluta
-                                        tenetur! Corporis deserunt doloremque excepturi harum quam!</p>
-                                </div>
-                                <a href="#">See more</a>
-                            </div>
-                        </div>
-                    </div>
+                    {
+                        loading
+                            ? <Loader/>
+                            : popularMovies.length !== 0
+                                ? <MySwiper
+                                    autoplay={{
+                                        delay: 2000,
+                                        disableOnInteraction: false,
+                                    }}
+                                    getBackdropImgLink={getBackdropImgLink}
+                                >
+                                    {popularMovies}
+                                </MySwiper>
+                                : error ? error.message || <h1>Error</h1> : <h1>Empty</h1>
+                    }
                 </div>
             </section>
 

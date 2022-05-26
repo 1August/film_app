@@ -52,6 +52,8 @@ label + label, label + button{
 }
 
 button{
+    width: 40%;
+
     background-color: transparent;
     padding: .5rem;
 }
@@ -70,6 +72,10 @@ button:disabled{
 
 button:disabled::after{
     content: ' ...';
+}
+
+button + button{
+    /*margin-top: 1rem;*/
 }
 
 .leftSide, .rightSide{
@@ -125,8 +131,25 @@ button:disabled::after{
     left: 0 !important;
 }
 
-.loginForm{
+.loginForm, .registerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    flex-wrap: wrap;
+}
 
+:is(.loginForm, .registerForm) label{
+    width: 100%;
+}
+
+.btns{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 2rem 0;
 }
 
 .loginImg{

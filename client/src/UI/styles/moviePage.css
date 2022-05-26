@@ -1,0 +1,88 @@
+#moviePage a{
+    color: #b2ff3a;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.movieHead{
+    padding: 5rem 0;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.background{
+    padding: 4rem 0;
+
+    backdrop-filter: brightness(.3);
+}
+
+.movieHead .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    color: #fff;
+}
+
+.movieHead__image{
+    width: calc(40% - 1rem);
+}
+
+.movieHead__image img{
+    border-radius: 10px;
+    border: inset 1px rgba(var(--main-white), .5);
+    box-shadow: .5rem .5rem 15px rgba(var(--main-dark), .5), -.5rem -.5rem 15px rgba(var(--main-dark), .5);
+}
+
+.movieHead__info{
+    width: calc(60% - 1rem);
+}
+
+.companiesList{
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
+    grid-gap: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.companyItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.similarMoviesList{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+}
+
+.similarMovieItem{
+    /*width: calc(100% / 3 - 2rem);*/
+}
+
+
+
+.movieHead button{
+    background-color: #fff;
+    margin: 2rem 0;
+}
+
+button[data-favorite='true']{
+    background-color: #333;
+    color: #acacac;
+}
+
+button[data-favorite='false']{
+    background-color: #fff;
+}
+
+
+.swiper{
+    width: 100vw;
+}
