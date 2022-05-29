@@ -55,7 +55,7 @@ export const AccountPage = () => {
             setFavMovies(favMovies)
         }
         getFavMovies()
-    }, [])
+    }, [auth.userId])
 
     return(
         <section id="account">
@@ -68,10 +68,10 @@ export const AccountPage = () => {
                         <h1>
                             {
                                 loading
-                                ?   'Loading...'
+                                ?   <Loader/>
                                 :   error && user === null
                                     ?   'Error'
-                                    :   user.email
+                                    :   user.username
                             }
                         </h1>
                         <h3>

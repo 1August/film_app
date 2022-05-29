@@ -10,7 +10,7 @@ import rightPict from '../UI/img/MK-movie-right.jpg'
 export const AuthPage = () => {
     const {loading, error, request, clearError} = useHttp()
 
-    const [form, setForm] = useState({ registerEmail: '', registerPassword: '', loginEmail: '', loginPassword: '' })
+    const [form, setForm] = useState({ registerUsername: '', registerEmail: '', registerPassword: '', loginEmail: '', loginPassword: '' })
     const formChangeHandler = e => {
         setForm({...form, [e.target.name]: e.target.value})
     }
@@ -28,7 +28,7 @@ export const AuthPage = () => {
     const registerHandler = async () => {
         try{
             const url = '/api/auth/register'
-            const data = await request(url, 'POST', {email: form.registerEmail, password: form.registerPassword})
+            const data = await request(url, 'POST', {username: form.registerUsername, email: form.registerEmail, password: form.registerPassword})
             await loginAfterRegister()
         } catch (e){
             console.error(e)
@@ -139,6 +139,10 @@ export const AuthPage = () => {
                     { error ? <h3 className={'errorMsg'}>Wrong values to sign up.</h3> : '' }
                     <div className="container">
                         <form className={'registerForm'}>
+                            <label htmlFor="registerUsername">
+                                <p>Username</p>
+                                <input type="text" id={'registerUsername'} value={form.registerUsername} onChange={formChangeHandler} placeholder={'David Berry'} name={'registerUsername'}/>
+                            </label>
                             <label htmlFor="registerEmail">
                                 <p>Email</p>
                                 <input type="email" id={'registerEmail'} value={form.registerEmail} onChange={formChangeHandler} placeholder={'mail@example.com'} name={'registerEmail'}/>

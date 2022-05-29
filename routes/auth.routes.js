@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 
 const User = require('../models/User')
+// const Movie = require('../models/Movie')
 
 const mongoose = require('mongoose')
 const getJSON = mongooseCode => JSON.parse(JSON.stringify(mongooseCode))
@@ -44,14 +45,14 @@ router.post(
                     message: 'Incorrect data to register'
                 })
             }
-            const {email, password} = req.body
+            const {username, email, password} = req.body
 
             const candidate = await User.findOne({email})
             if (candidate)
                 return res.status(400).json('User with this email already exists.')
 
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({email, password: hashedPassword})
+            const user = new User({username, email, password: hashedPassword})
 
             await user.save()
 
@@ -154,7 +155,7 @@ router.post(
             const user = await User.findById(mongoose.Types.ObjectId(`${userId}`))
             if (!user)
                 return res.status(400).json({message: 'User do not found'})
-            return res.json({userId: user.id, email: user.email, favoriteMovies: user.favoriteMovies})
+            return res.json({userId: user.id, username: user.username, email: user.email, favoriteMovies: user.favoriteMovies})
         } catch (e) {
             return res.status(500).json({message: `Error on getting email`})
         }
@@ -175,7 +176,7 @@ router.get(
             const favMovies = getJSON(await User.findOne({_id: mongoose.Types.ObjectId(userId)}, {favoriteMovies: 1})).favoriteMovies
 
             return res.status(201).json(favMovies)
-        } catch (e){
+        } catch (e) {
             console.log(e)
         }
     }
@@ -183,18 +184,20 @@ router.get(
 
 // /api/auth/isFavoriteMovie?userId=0&movieId=0
 router.get(
-    'isFavoriteMovie',
+    '/isFavoriteMovie',
     [],
     async (req, res) => {
-        try{
-            const [userId, movieId] = [req.query.userId, req.query.movieId]
-            console.log(userId, movieId)
+        try {
+            const userId = req.query.userId
+            const movieId = req.query.movieId
 
-            const user = getJSON(User.findById(userId))
-            console.log('favs', user.favoriteMovies)
-            // const isFavorite = user.favoriteMovies
-        }catch (e){
+            const favMovies = getJSON(await User.findOne({_id: mongoose.Types.ObjectId(userId)}, {favoriteMovies: 1})).favoriteMovies
+            const isFavoriteMovie = favMovies.some(movieObj => `${movieObj.movieId}` === `${movieId}`)
+
+            return res.status(200).json(isFavoriteMovie)
+        } catch (e) {
             console.log(e)
+            return res.status(500).json({error: e.message})
         }
     }
 )
@@ -205,30 +208,42 @@ router.post(
     [],
     async (req, res) => {
         try {
-            const errors = validationResult(req)
-            if (!errors.isEmpty()) {
-                return res.status(400).json({
-                    errors: errors.array(),
-                    message: 'Incorrect data to get email'
-                })
-            }
-            const { userId, movieId } = req.body
-
+            const {userId, movieId} = req.body
             const user = await User.findById(mongoose.Types.ObjectId(userId))
-
             if (!user)
                 return res.status(400).json({message: 'User do not found'})
 
             const favMovies = getJSON(user).favoriteMovies.filter(movie => movie.hasOwnProperty('movieId'))
             user.favoriteMovies = [
                 ...getJSON(favMovies),
-                { movieId }
+                {movieId}
             ]
             await user.save()
 
-            return res.json({ deleted: false, added: true })
+            return res.json({ok: true})
         } catch (e) {
-            return res.status(500).json({message: `Error on adding to favorites`})
+            return res.status(500).json({ok: false, message: `Error on adding to favorites`})
+        }
+    }
+)
+
+// /api/auth/removeFromFavoriteMovies
+router.post(
+    '/removeFromFavoriteMovies',
+    [],
+    async (req, res) => {
+        try {
+            const {userId, movieId} = req.body
+            const user = await User.findById(mongoose.Types.ObjectId(userId))
+            if (!user)
+                return res.status(400).json({message: 'User do not found'})
+
+            user.favoriteMovies = user.favoriteMovies.filter(el => `${el.movieId}` !== `${movieId}`)
+            await user.save()
+
+            return res.json({ok: true})
+        } catch (e) {
+            return res.status(500).json({ok: false, message: `Error on adding to favorites`})
         }
     }
 )

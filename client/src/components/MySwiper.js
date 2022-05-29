@@ -5,8 +5,6 @@ import {MovieCard} from "./MovieCard"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {Autoplay, Lazy, Pagination} from "swiper"
 
-// import '../UI/styles/mySwiper.css'
-
 export const MySwiper = ({children, getBackdropImgLink, ...props}) => {
     const {
         slidesPerView = 4.5,

@@ -10,6 +10,8 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    /*max-height: 60vw;*/
 }
 
 .background{
@@ -73,13 +75,26 @@
     margin: 2rem 0;
 }
 
+button[data-favorite] span{
+    display: none;
+}
+
 button[data-favorite='true']{
     background-color: #333;
     color: #acacac;
 }
 
+button[data-favorite='true']::after{
+    content: 'Remove from favorites';
+}
+
 button[data-favorite='false']{
     background-color: #fff;
+    color: #000;
+}
+
+button[data-favorite='false']::after{
+    content: 'Add to favorites';
 }
 
 
