@@ -7,7 +7,6 @@ const jwt = require('jsonwebtoken')
 const config = require('config')
 
 const User = require('../models/User')
-// const Movie = require('../models/Movie')
 
 const mongoose = require('mongoose')
 const getJSON = mongooseCode => JSON.parse(JSON.stringify(mongooseCode))

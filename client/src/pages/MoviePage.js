@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom"
-import {useContext, useEffect, useRef, useState as useRState} from "react"
+import {useContext, useEffect, useRef} from "react"
 import useState from "react-usestateref"
 
 import '../UI/styles/moviePage.css'

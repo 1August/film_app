@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom"
 
-import {useContext, useEffect, useRef, useState} from "react"
+import {useContext, useEffect, useRef} from "react"
+import useState from "react-usestateref"
 import {AuthContext} from "../context/AuthContext"
 
 import '../UI/styles/variables.css'
@@ -14,7 +15,7 @@ export const Nav = () => {
     const auth = useContext(AuthContext)
     const expandAccountNav = useRef({})
 
-    const [userEmail, setUserEmail] = useState(null)
+    const [user, setUser, refUser] = useState({})
 
     const logoutHandler = () => auth.logout()
     const expandAccount = () => expandAccountNav.current.classList.toggle('show')
@@ -28,7 +29,7 @@ export const Nav = () => {
                 const url = '/api/auth/getUserById'
                 const user = await request(url, 'POST', {userId: auth.userId})
                 if (!user) return console.log('User not found')
-                setUserEmail(user.email)
+                setUser(user)
             }
             getUser()
         }
@@ -52,9 +53,10 @@ export const Nav = () => {
                                 ? (<li>
                                     <p onClick={expandAccount}><span className={'material-icons'} id={'expandIcon'}>&#xe853;</span>{
                                         loading
-                                        ?   'Loading'
-                                        :   userEmail
-                                            ? userEmail : error
+                                        ? 'Loading'
+                                        : refUser.current?.username
+                                            ? refUser.current.username
+                                            : error
                                                 ?   error.message || 'Error'
                                                 :   'Unknown'
                                     }</p>

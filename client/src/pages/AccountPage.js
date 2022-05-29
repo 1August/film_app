@@ -1,5 +1,6 @@
 import {useHttp} from "../hooks/http.hook"
-import {useContext, useEffect, useState} from "react"
+import {useContext, useEffect} from "react"
+import useState from "react-usestateref"
 import {AuthContext} from "../context/AuthContext"
 
 import temp from '../UI/img/MK-movie-left.jpg'
@@ -13,8 +14,8 @@ export const AccountPage = () => {
 
     const {id} = useParams()
 
-    const [user, setUser] = useState({})
-    const [favMovies, setFavMovies] = useState([])
+    const [user, setUser, refUser] = useState({})
+    const [favMovies, setFavMovies, refFavMovies] = useState([])
 
     const auth = useContext(AuthContext)
 
@@ -34,9 +35,6 @@ export const AccountPage = () => {
         const url = '/api/auth/getUserById'
         const data = await request(url, 'POST', {userId: auth.userId})
         setUser(data)
-        if (error){
-            setUser(null)
-        }
     }, [])
 
     /**
@@ -69,9 +67,9 @@ export const AccountPage = () => {
                             {
                                 loading
                                 ?   <Loader/>
-                                :   error && user === null
+                                :   error && refUser.current === null
                                     ?   'Error'
-                                    :   user.username
+                                    :   refUser.current.username
                             }
                         </h1>
                         <h3>
@@ -87,42 +85,26 @@ export const AccountPage = () => {
                             loading
                             ? <Loader/>
                             : error ? <h1>{ error.message || 'Error' }</h1>
-                                : favMovies?.map((el, i) => {
-                                    return(
-                                        <div className="favoriteItem" key={el.title + i}>
-                                            <div className="movieImg">
-                                                <img src={getBackdropImgLink(el?.backdrop_path || el?.poster_path)} alt=""/>
-                                            </div>
-                                            <div className="movieDetails">
-                                                <h2><Link to={`/movie/${el.id}}`}>{ el.title }</Link></h2>
-                                                <p>
-                                                    { `${el.overview.substring(0, 70)}...` }
-                                                </p>
-                                            </div>
-                                        </div>
-                                    )
-                                })
+                                : refFavMovies.current.length !== 0
+                                        ? refFavMovies.current?.map((movie, i) => {
+                                            return(
+                                                <div className="favoriteItem" key={movie?.title + i}>
+                                                    <div className="movieImg">
+                                                        <img src={getBackdropImgLink(movie?.backdrop_path || movie?.poster_path)} alt=""/>
+                                                    </div>
+                                                    <div className="movieDetails">
+                                                        <h2><Link to={`/movie/${movie.id}}`}>{ movie?.title }</Link></h2>
+                                                        <p>
+                                                            { `${movie?.overview.substring(0, 70)}...` }
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                        : <h1>Your favourite list is empty!</h1>
                         }
                     </div>
                 </div>
-
-
-
-
-
-
-                {/*<h1>{ user.email }</h1>*/}
-                {/*{*/}
-                {/*    loading*/}
-                {/*    ?   <h3>Loading...</h3>*/}
-                {/*    :   error*/}
-                {/*        ? <h3>Something went wrong... Please, try again.</h3>*/}
-                {/*        : user ?? user.favoriteMovies*/}
-                {/*                ?   <h3>Let's add some movies to favorites!</h3>*/}
-                {/*                :   <ul>*/}
-                {/*                    { user.favoriteMovies.map(el => <li key={el.movieId}>Movie name</li>) }*/}
-                {/*                </ul>*/}
-                {/*}*/}
             </div>
         </section>
     )

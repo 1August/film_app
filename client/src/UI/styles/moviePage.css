@@ -59,9 +59,9 @@
 }
 
 .similarMoviesList{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1rem;
+    /*display: grid;*/
+    /*grid-template-columns: repeat(4, 1fr);*/
+    /*grid-gap: 1rem;*/
 }
 
 .similarMovieItem{
@@ -99,5 +99,5 @@ button[data-favorite='false']::after{
 
 
 .swiper{
-    width: 100vw;
+    /*width: 100vw;*/
 }
