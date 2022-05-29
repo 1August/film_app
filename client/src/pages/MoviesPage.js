@@ -131,20 +131,6 @@ export const MoviesPage = () => {
      */
     const getBackdropImgLink = imgUrl => `https://image.tmdb.org/t/p/original${imgUrl}`
 
-    /**
-     * Get amount of movies with one loading by page number
-     */
-    // useEffect(async () => {
-    //     const res = []
-    //     const totalPages = 10
-    //     for (let i = 1; i <= totalPages; i++){
-    //         const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_video&page=${i}`
-    //         const data = await request(url)
-    //         res.push(data)
-    //     }
-    //     console.log(res)
-    // }, [])
-
     return <section id="filmsPage">
         <div className="container">
             {

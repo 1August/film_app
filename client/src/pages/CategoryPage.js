@@ -14,7 +14,7 @@ export const CategoryPage = () => {
      * Get current category name
      * @type {Location<LocationState>}
      */
-    // const location = useLocation()
+        // const location = useLocation()
     const {categoryURL} = useParams()
     const categoryId = categoryURL.slice(categoryURL.lastIndexOf('&') + 1)
     const categoryName = categoryURL.slice(0, categoryURL.lastIndexOf('&'))
@@ -37,7 +37,7 @@ export const CategoryPage = () => {
         const res = []
         const totalPages = 10
 
-        for (let i = 1; i <= totalPages; i++){
+        for (let i = 1; i <= totalPages; i++) {
             // Get movies by genre
             const url = `https://api.themoviedb.org/3/discover/movie/?api_key=${API_KEY}&language=en-US&with_genres=${categoryId}&page=${i}`
             const data = await request(url)
@@ -56,20 +56,27 @@ export const CategoryPage = () => {
 
     return <section id={'categoryPage'}>
         <div className="container">
-            <div className="cardsList">
-                {
-                    loading
-                        ? <Loader/>
-                        : moviesList.length !== 0
-                            ? moviesList.map((el, i) =>{
-                                return (
-                                    <div className="card" key={el.id}>
-                                        <MovieCard el={el} getBackdropImgLink={getBackdropImgLink} key={`${i}-${el.id}`}/>
-                                    </div>
-                                )
-                            }) : error ? error.message || <h1>Error</h1> : <h1>Empty</h1>
-                }
-            </div>
+            {
+                loading
+                    ? <Loader/>
+                    : moviesList.length !== 0
+                        ? <>
+                            <h2>{categoryName.substring(0, 1).toUpperCase() + categoryName.substring(1).toLowerCase()}</h2>
+                            <div className="cardsList">
+                                {
+                                    moviesList.map((el, i) => {
+                                        return (
+                                            <div className="card" key={el.id}>
+                                                <MovieCard el={el} getBackdropImgLink={getBackdropImgLink}
+                                                           key={`${i}-${el.id}`}/>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        </>
+                        : error ? error.message || <h1>Error</h1> : <h1>Empty</h1>
+            }
         </div>
     </section>
 }

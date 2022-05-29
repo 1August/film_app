@@ -1,0 +1,56 @@
+:root{
+    --searchInput-width: 25%;
+    --about-container-gap: 4rem;
+}
+
+#about{
+    padding-top: 3rem;
+}
+
+#about .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--about-container-gap);
+}
+
+.searchInput{
+    width: var(--searchInput-width);
+
+    transition: top .5s ease-in-out;
+    position: sticky;
+    top: 25vh;
+}
+
+label + .inputLine{
+    margin-top: 1rem;
+}
+
+.searchInput .inputLine{
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: minmax(auto, 70%) minmax(20%, auto);
+}
+
+.queryMovies{
+    width: calc(100% - var(--searchInput-width) - var(--about-container-gap));
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+
+.movieItem{
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    grid-gap: 1rem;
+}
+
+.movieItem img{
+    object-fit: cover;
+    object-position: center;
+}
+
+.movieItem .movieDescription{
+    padding: 0 .2rem;
+}

@@ -15,7 +15,7 @@ export const MovieCard = ({el, getBackdropImgLink}) => {
             </Link>
             <div className="movieDescription">
                 <h3>
-                    {el?.title || el?.original_title}
+                    {el?.title || el?.original_title || el?.name}
                 </h3>
                 <h5 className={'rate'}>
                     {el?.vote_average || 0}

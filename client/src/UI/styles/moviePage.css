@@ -31,12 +31,32 @@
 
 .movieHead__image{
     width: calc(40% - 1rem);
+
+    position: relative;
 }
 
 .movieHead__image img{
     border-radius: 10px;
     border: inset 1px rgba(var(--main-white), .5);
     box-shadow: .5rem .5rem 15px rgba(var(--main-dark), .5), -.5rem -.5rem 15px rgba(var(--main-dark), .5);
+}
+
+.movieHead__image a{
+    opacity: 0;
+    position: absolute;
+
+    padding: 1rem 2rem;
+    backdrop-filter: brightness(.2);
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    transition: opacity .5s ease-in-out;
+}
+
+.movieHead__image:hover a{
+    opacity: 1;
 }
 
 .movieHead__info{

@@ -141,15 +141,15 @@ export const AuthPage = () => {
                         <form className={'registerForm'}>
                             <label htmlFor="registerUsername">
                                 <p>Username</p>
-                                <input type="text" id={'registerUsername'} value={form.registerUsername} onChange={formChangeHandler} placeholder={'David Berry'} name={'registerUsername'}/>
+                                <input type="text" id={'registerUsername'} value={form.registerUsername} onChange={formChangeHandler} placeholder={'David Berry'} name={'registerUsername'} required={true}/>
                             </label>
                             <label htmlFor="registerEmail">
                                 <p>Email</p>
-                                <input type="email" id={'registerEmail'} value={form.registerEmail} onChange={formChangeHandler} placeholder={'mail@example.com'} name={'registerEmail'}/>
+                                <input type="email" id={'registerEmail'} value={form.registerEmail} onChange={formChangeHandler} placeholder={'mail@example.com'} name={'registerEmail'} required={true}/>
                             </label>
                             <label htmlFor="registerPassword">
                                 <p>Password</p>
-                                <input type="password" id={'registerPassword'} value={form.registerPassword} onChange={formChangeHandler} placeholder={'password'} name={'registerPassword'}/>
+                                <input type="password" id={'registerPassword'} value={form.registerPassword} onChange={formChangeHandler} placeholder={'password'} name={'registerPassword'} required={true}/>
                             </label>
                             <div className="btns">
                                 <button type={'submit'} onClick={registerHandler} disabled={loading}>Register</button>

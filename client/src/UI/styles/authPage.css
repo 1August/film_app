@@ -28,10 +28,10 @@ form p{
     margin: .5rem 0;
 }
 
-input, button{
-    border: 1px solid rgba(var(--main-dark), .6);
-    border-radius: 3px;
-}
+/*input, button{*/
+/*    border: 1px solid rgba(var(--main-dark), .6);*/
+/*    border-radius: 3px;*/
+/*}*/
 
 input{
     width: 100%;
@@ -51,11 +51,11 @@ label + label, label + button{
     margin-top: 1.5rem;
 }
 
-button{
+#auth button{
     width: 40%;
 
-    background-color: transparent;
-    padding: .5rem;
+    /*background-color: transparent;*/
+    /*padding: .5rem;*/
 }
 
 button:hover{

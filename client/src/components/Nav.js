@@ -23,16 +23,18 @@ export const Nav = () => {
 
     const { loading, request, error, clearError } = useHttp()
 
+    // Functions
+    // get user info
+    const getUser = async () => {
+        const url = '/api/auth/getUserById'
+        const user = await request(url, 'POST', {userId: auth.userId})
+        if (!user) return console.log('User not found')
+        setUser(user)
+    }
+
+    // useEffect
     useEffect(() => {
-        if (auth.isAuthenticated){
-            const getUser = async () => {
-                const url = '/api/auth/getUserById'
-                const user = await request(url, 'POST', {userId: auth.userId})
-                if (!user) return console.log('User not found')
-                setUser(user)
-            }
-            getUser()
-        }
+        getUser()
     }, [])
 
     return (
@@ -47,27 +49,35 @@ export const Nav = () => {
                     <ul>
                         <li><Link to={'/'}><span className="material-icons" id="homeIcon">&#xe88a;</span>Home</Link></li>
                         <li><Link to={'/movies'}><span className="material-icons" id="filmsIcon">&#xe02c;</span>Films</Link></li>
-                        <li><Link to={'/about'}><span className="material-icons" id="aboutIcon">&#xe8af;</span>About</Link></li>
+                        <li><Link to={'/search'}><span className="material-icons" id="searchIcon">&#xe8b6;</span>Search</Link></li>
                         {
                             auth.isAuthenticated
-                                ? (<li>
-                                    <p onClick={expandAccount}><span className={'material-icons'} id={'expandIcon'}>&#xe853;</span>{
-                                        loading
-                                        ? 'Loading'
-                                        : refUser.current?.username
-                                            ? refUser.current.username
-                                            : error
-                                                ?   error.message || 'Error'
-                                                :   'Unknown'
-                                    }</p>
-                                    <div className="expandAccount" ref={expandAccountNav}>
-                                        <ul onClick={hideExpandMenu}>
-                                            <li><Link to={`/account/${auth.userId}`}>Account</Link></li>
-                                            <li><Link to={'/'} onClick={logoutHandler}>Logout</Link></li>
-                                        </ul>
-                                    </div>
-                                </li>)
-                                : (<li><Link to={'/auth'}><span className={'material-icons'} id={'expandIcon'}>&#xe853;</span>Account</Link></li>)
+                                ? (
+                                    <li>
+                                        <p onClick={expandAccount}><span className={'material-icons'} id={'expandIcon'}>&#xe853;</span>{
+                                            loading
+                                            ? 'Loading'
+                                            : refUser.current?.username
+                                                ? refUser.current.username
+                                                : error
+                                                    ?   error.message || 'Error'
+                                                    :   'Unknown'
+                                        }</p>
+                                        <div className="expandAccount" ref={expandAccountNav}>
+                                            <ul onClick={hideExpandMenu}>
+                                                <li><Link to={`/account/${auth.userId}`}>Account</Link></li>
+                                                <li><Link to={'/'} onClick={logoutHandler}>Logout</Link></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                )
+                                : (
+                                    <li>
+                                        <Link to={'/auth'}>
+                                            <span className={'material-icons'} id={'expandIcon'}>&#xe853;</span>Account
+                                        </Link>
+                                    </li>
+                                )
                         }
                     </ul>
                 </div>

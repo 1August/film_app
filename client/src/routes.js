@@ -1,7 +1,7 @@
 import {WelcomePage} from "./pages/WelcomePage"
 import {Routes, Route} from "react-router-dom"
 import {MoviesPage} from "./pages/MoviesPage";
-import {AboutPage} from "./pages/AboutPage";
+import {SearchPage} from "./pages/SearchPage";
 import {AuthPage} from "./pages/AuthPage";
 import {AccountPage} from "./pages/AccountPage";
 import {MoviePage} from "./pages/MoviePage";
@@ -14,7 +14,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path={'/'} element={<WelcomePage/>}/>
                 <Route path={'/movies'} element={<MoviesPage/>}/>
                 <Route path={'/movies/:categoryURL'} element={<CategoryPage/>}/>
-                <Route path={'/about'} element={<AboutPage/>}/>
+                <Route path={'/search'} element={<SearchPage/>}/>
                 <Route path={'/account/:id'} element={<AccountPage/>}/>
                 <Route path={'/movie/:id'} element={<MoviePage/>}/>
 
@@ -31,7 +31,7 @@ export const useRoutes = isAuthenticated => {
             <Route path={'/'} element={<WelcomePage/>}/>
             <Route path={'/movies'} element={<MoviesPage/>}/>
             <Route path={'/movies/:categoryURL'} element={<CategoryPage/>}/>
-            <Route path={'/about'} element={<AboutPage/>}/>
+            <Route path={'/search'} element={<SearchPage/>}/>
             <Route path={'/auth'} element={<AuthPage/>}/>
             <Route path={'/movie/:id'} element={<MoviePage/>}/>
 

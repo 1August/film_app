@@ -42,6 +42,7 @@ export const MoviePage = () => {
     // Functions
     const getBackdropImgLink = imgUrl => `https://image.tmdb.org/t/p/original${imgUrl}`
     const getMovieReqById = movieId => `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`
+    const getYoutubeLink = youtubePath => youtubePath ? `https://www.youtube.com/watch?v=${youtubePath}` : '/'
 
     // Get current movie
     const getCurrentMovie = async () => {
@@ -144,6 +145,9 @@ export const MoviePage = () => {
                                             src={getBackdropImgLink(refCurrentMovie.current?.backdrop_path || refCurrentMovie.current?.poster_path)}
                                             alt="Backdrop image"
                                         />
+                                        <a href={getYoutubeLink(refCurrentMovie.current?.videos?.results[0]?.key)} target={'_blank'}>
+                                            <span className="material-icons">&#xe037;</span>Watch trailer
+                                        </a>
                                     </div>
                                     <div className="movieHead__info">
                                         <h1>

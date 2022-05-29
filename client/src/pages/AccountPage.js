@@ -63,18 +63,18 @@ export const AccountPage = () => {
                         <img src={temp} alt=""/>
                     </div>
                     <div className="accountInfo">
-                        <h1>
-                            {
-                                loading
+                        {
+                            loading
                                 ?   <Loader/>
                                 :   error && refUser.current === null
                                     ?   'Error'
-                                    :   refUser.current.username
-                            }
-                        </h1>
-                        <h3>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, repellendus?
-                        </h3>
+                                    : <>
+                                        <h1>{refUser.current.username}</h1>
+                                        <h3>{refUser.current.email}</h3>
+                                    </>
+
+
+                        }
                     </div>
                 </div>
                 <div className="details">
@@ -101,7 +101,14 @@ export const AccountPage = () => {
                                                 </div>
                                             )
                                         })
-                                        : <h1>Your favourite list is empty!</h1>
+                                        : (
+                                            <>
+                                                <h3>Your favourite list is empty!</h3>
+                                                <Link className={'goSearch'} to={'/search'}>
+                                                    <span className="material-icons">&#xe8b6;</span><span>Search</span>
+                                                </Link>
+                                            </>
+                                        )
                         }
                     </div>
                 </div>
